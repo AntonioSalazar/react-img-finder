@@ -1,13 +1,30 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; //1rem = 10px, how? 10px/16px = 62.5%, being 16px the browser default size 
+}
+
+body {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.header {
+  font-size: 3rem;
+}
+
+.search-btn:hover{
+  background-color: #EEEEEE;
+ 
 }
