@@ -24,7 +24,34 @@ body {
   font-size: 3rem;
 }
 
-.search-btn:hover{
-  background-color: #EEEEEE;
+.search-btn{
+
+  transition: all .3s;
+
+  &:hover {
+      background-color: #fff;
+      transform: translateY(-20%)
+  }
+
+  &:focus{
+    animation: pulsate 1s infinite;
+  }
+
+  @keyframes pulsate {
+    0% {
+        transform: scale(1);
+        box-shadow: none;
+    }
+
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 1rem 4rem rgba(0, 0, 0, .25);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: none;
+    }
+  }
  
 }
