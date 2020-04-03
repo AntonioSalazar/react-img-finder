@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Form from './components/Form';
+import ImagesList from './components/ImagesList';
 
 function App() {
 
   const [searchApp , setSearchApp ] = useState('');
+  const [imgsArray, setImgs ] = useState([]);
 
   useEffect(() => {
     const apiRequest = async () => {
@@ -14,7 +16,7 @@ function App() {
 
       const request = await fetch(url);
       const response = await request.json();
-      setSearchApp(response.hits)
+      setImgs(response.hits)
     }
 
     apiRequest();
@@ -28,6 +30,12 @@ function App() {
         <Form
           setSearchApp={setSearchApp}
         />
+      </div>
+
+      <div className='row justify-content-center'>
+        <ImagesList
+          imgsArray={imgsArray}
+        />  
       </div>
 
     </div>
