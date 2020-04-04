@@ -15,7 +15,7 @@ function App() {
       if (searchApp === '') return;
 
       const imgNumber = 30;
-      const url = `https://pixabay.com/api/?key=${process.env.REACT_APP_PIXABY_API}&q=${searchApp}&per_page=${imgNumber}`;
+      const url = `https://pixabay.com/api/?key=${process.env.REACT_APP_PIXABY_API}&q=${searchApp}&per_page=${imgNumber}&page=${currentPage}`;
 
       const request = await fetch(url);
       const response = await request.json();
@@ -24,13 +24,35 @@ function App() {
       //Calculate the total of pages
 
       const calculateTotalPages = Math.ceil(response.totalHits / imgNumber);
-      
+
       setTotalPages(calculateTotalPages);
+
+      //move the screen to the top when refreshing
+      const jumbotron = document.querySelector('.jumbotron');
+      jumbotron.scrollIntoView({behavior: 'smooth'})
     }
 
     apiRequest();
 
-  }, [searchApp])
+  }, [searchApp, currentPage])
+
+    //function for the previous page
+    const previousPage = () => {
+    const newCurrentPage = currentPage - 1;
+
+    if(newCurrentPage === 0 ) return
+
+    setCurrentPage(newCurrentPage)
+  }
+
+  //function for next page
+
+  const nextPage = () => {
+    const newCurrentPage = currentPage + 1;
+    if(newCurrentPage > totalPages) return
+
+    setCurrentPage(newCurrentPage);
+  }
 
   return (
     <div className='container'> 
@@ -45,6 +67,28 @@ function App() {
         <ImagesList
           imgsArray={imgsArray}
         />  
+
+        {
+          (currentPage === 1) ? null :(
+            <button
+            className='btn btn-info mr-1 mb-5'
+            type='button'
+            onClick={previousPage}
+          >&laquo; Anterior</button>
+          )  
+        }
+
+        {
+          (currentPage === totalPages) ? null : (
+        <button
+          className='btn btn-info mr-1 mb-5'
+          type='button'
+          onClick={nextPage}
+        >Siguiente &raquo;</button>        
+          )
+        }
+
+
       </div>
 
     </div>
