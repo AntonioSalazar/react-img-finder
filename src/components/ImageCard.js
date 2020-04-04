@@ -9,6 +9,19 @@ const ImageCard = ({imgs}) => {
             <div className='card'>
                 <img src={previewURL} alt={tags} className='card-img-top'></img>
             </div>
+            <div className='card-body'>
+                <p className='card-text'>{likes} likes</p>
+                <p className='card-text'>{views} views</p>
+            </div>
+
+            <div className='card-footer'>
+                 <a
+                    href={largeImageURL}
+                    target="_blank"
+                    rel='noopener noreferrer'
+                    className='btn btn-primary btn-block'
+                 >Image</a>
+            </div>
         </div>
      );
 }

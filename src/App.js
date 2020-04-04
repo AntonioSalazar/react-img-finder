@@ -6,6 +6,9 @@ function App() {
 
   const [searchApp , setSearchApp ] = useState('');
   const [imgsArray, setImgs ] = useState([]);
+  //pagination states
+  const [ currentPage, setCurrentPage ] = useState(1);
+  const [ totalPages, setTotalPages ] = useState(1);
 
   useEffect(() => {
     const apiRequest = async () => {
@@ -17,6 +20,12 @@ function App() {
       const request = await fetch(url);
       const response = await request.json();
       setImgs(response.hits)
+
+      //Calculate the total of pages
+
+      const calculateTotalPages = Math.ceil(response.totalHits / imgNumber);
+      
+      setTotalPages(calculateTotalPages);
     }
 
     apiRequest();
