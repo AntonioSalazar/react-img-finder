@@ -13,3 +13,6 @@ Some imgs of the project:
 The site shows multiple results so I have added some pagination
 
 ![](public/pagination.png)
+
+
+:kissing_heart:
